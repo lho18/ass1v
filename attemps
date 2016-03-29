@@ -63,17 +63,17 @@ function translate(start)
         var code = "";
         if (redOrBlue === true)
             {
-                while (redOrBlue === true)
-                {
-                    red++;
-                }
-                
-                
+              red++;
+            }
+            
+        else if (redOrBlue === false)
+            {
+                blue++
                 if (red === 1 || red === 2)
                 {
                     code =+ ".";
                 }
-                if (red >= 3)
+                else if (red >= 3)
                 {
                     code =+ "_";
                 }
