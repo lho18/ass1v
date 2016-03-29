@@ -1,0 +1,279 @@
+/*
+ * Morse Code receiver app information:
+ *
+ * Function: messageFinished(): stops the capturing process
+ *
+ *     You can call this function to let the app know that the 
+ *     end-of-transmission signal has been received.
+ *
+ * -------------------------------------------------------
+ *
+ * ID: messageField: id of the message text area
+ *
+ *     This will be a textarea element where you can display
+ *     the recieved message for the user.
+ * 
+ * -------------------------------------------------------
+ *
+ * ID: restartButton: id of the Restart button
+ *
+ *     This is a button element.  When clicked this should 
+ *     cause your app to reset its state and begin recieving
+ *     a new message.
+ *
+ */
+
+
+// ADD YOUR ADDITIONAL FUNCTIONS AND GLOBAL VARIABLES HERE
+
+
+/*
+ * This function is called once per unit of time with camera image data.
+ * 
+ * Input : Image Data. An array of integers representing a sequence of pixels.
+ *         Each pixel is representing by four consecutive integer values for 
+ *         the 'red', 'green', 'blue' and 'alpha' values.  See the assignment
+ *         instructions for more details.
+ * Output: You should return a boolean denoting whether or not the image is 
+ *         an 'on' (red) signal.
+ */
+
+var output = "";
+
+function decodeCameraImage(data)
+{
+    // ADD YOUR CODE HERE
+    if (data[0] > data[2])
+    {
+        return true;
+    }
+    
+    else
+    {
+        return false;
+    }
+}
+
+function translate(start)
+{
+    var i = 0
+    while (i < 1)
+    {
+        var red = 0, blue = 0;
+        var code = "";
+        if (redOrBlue === true)
+            {
+                while (redOrBlue === true)
+                {
+                    red++;
+                }
+                
+                
+                if (red === 1 || red === 2)
+                {
+                    code =+ ".";
+                }
+                if (red >= 3)
+                {
+                    code =+ "_";
+                }
+            }
+    
+        if (redOrBlue === false)
+            {
+                while (redOrBlue === false)
+                {
+                    blue++;
+                }
+                if (blue === 1 || blue === 2)
+                {
+                    code =+ " ";
+                }
+                if (blue === 3 || blue === 4 || blue === 5 || blue === 6)
+                {
+                    output =+ lookupTable[code]();
+                    i++;
+                }
+                if (blue >= 7)
+                {
+                    output =+ " ";
+                    i++;
+                }
+            }
+    
+    }
+}
+
+messageField.innerHTML = output ;
+
+ 
+var lookupTable ={
+    
+ ". _" : function() {
+     return "a";
+ },
+ " _ . . ." : function() {
+     return "b";
+ },
+    " _ . _ ." : function() {
+     return "c";
+ },
+     " _ . ." : function() {
+     return "d";
+ },
+      "." : function() {
+     return "e";
+ },
+    ". . _." : function() {
+     return "f";
+ },
+    "_ _ ." : function() {
+     return "g";
+ },
+    ". . . ." : function() {
+     return "h";
+ },
+     ". ." : function() {
+     return "i";
+ },
+   ". _ _ _"  : function() {
+     return "j";
+ },
+     "_ . _" : function() {
+     return "k";
+ },
+     " . _ . ." : function() {
+     return "l";
+ },
+    "_ _" : function() {
+     return "m";
+ },
+    " _ ." : function() {
+     return "n";
+ },
+     "_ _ _" : function() {
+     return "o";
+ },
+     ". _ _ ." : function() {
+     return "p";
+ },
+    "_ _ . _" : function() {
+     return "q";
+ },
+     ". _ ." : function() {
+     return "r";
+ },
+     ". . ." : function() {
+     return "s";
+ },
+     "_" : function() {
+     return "t";
+ },
+     ". . _" : function() {
+     return "u";
+ },
+     ". . . _" : function() {
+     return "v";
+ },
+     ". _ _" : function() {
+     return "w";
+ },
+    "_ . . _" : function() {
+     return "x";
+ },
+     "_ . _ _" : function() {
+     return "y";
+ },
+     "_ _ . ." : function() {
+     return "z";
+ },
+    "_ _ _ _ _" : function() {
+     return "0";
+ },
+     ". _ _ _ _" : function() {
+     return "1";
+ },
+     ". . _ _ _" : function() {
+     return "2";
+ },
+     ". . . _ _" : function() {
+     return "3";
+ },
+     ". . . . _" : function() {
+     return "4";
+ },
+     ". . . . ." : function() {
+     return "5";
+ },
+     "_ . . . ." : function() {
+     return "6";
+ },
+     "_ _ . . ." : function() {
+     return "7";
+ },
+     "_ _ _ . ." : function() {
+     return "8";
+ },
+     "_ _ _ _ ." : function() {
+     return "9";
+ },
+     "_._ _ ." : function() {
+     return "(";
+ },
+     "_ . _ _ . _" : function() {
+     return ")";
+ },
+     " . _ . . _ ." : function() {
+     return "'";
+ },
+     " . . . . . . . . _ . . _" : function() {
+     return "$";
+ },
+     " . _ _ _ _ ." : function() {
+     return "\";
+ },
+     " _ . . _ ." : function() {
+     return "/";
+ },
+     " . _ . _ ." : function() {
+     return "+";
+ },
+     " _ _ _ . . ." : function() {
+     return ":";
+ },
+     " . _ . _ . _" : function() {
+     return ".";
+ },
+     " _ _ . . _ _ " : function() {
+     return ",";
+ },
+     " . . _ _ . . " : function() {
+     return "?";
+ },
+     " _ . . . . _ " : function() {
+     return "-";
+ },
+     " . _ _ . _ ." : function() {
+     return "@";
+ },
+     " _ . . . _ " : function() {
+     return "=";
+ },
+     " _ . . . _ " : function() {
+     return "-";
+ },
+     " _ _ _ ._ _ _ ." : function() {
+     return "!";
+ },
+     ". _ . _": function() {
+     return "<br />"; //new line
+ },
+      "_ . . . _": function() {
+     return "<br /> ????? !!!!"; // new para
+ },
+     ". . . _ . _": function() {
+     return "(end message)"; //something to end tranmission
+ },
+       
+}
+
